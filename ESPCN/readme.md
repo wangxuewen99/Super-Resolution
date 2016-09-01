@@ -32,6 +32,12 @@
 
 caffe matlab接口的使用可以参考http://christopher5106.github.io/deep/learning/2015/09/04/Deep-learning-tutorial-on-Caffe-Technology.html
 
+**效果** 
+
+![low resolution](http://img.blog.csdn.net/20160901170810983)
+![bicubic](http://img.blog.csdn.net/20160901170237449)
+![espcn](http://img.blog.csdn.net/20160901170251371)
+
 ###其他###
 draw_psnr.m：  绘制指定测试图像的PSNR随迭代次数变化的曲线
 *注：本项目中训练得到的网络不可直接使用opencv或者使用c++接口来做应用，因为matlab中图像是列序优先，而opencv或c++中通常为行序优先，直接应用会得到一个效果比较差的结果。
