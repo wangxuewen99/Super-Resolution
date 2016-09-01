@@ -26,16 +26,7 @@
 ###**应用**###
 本项目中[sr_demo.m](https://github.com/66wangxuewen99/Super-Resolution/blob/master/ESPCN/sr_demo.m)实现了使用caffe的matlab接口来实现图片超分辨率。
 基本流程如下：
-```flow
-st=>start: 读入图片（只取Y通道并归一化）
-op1=>operation: 设置运行模式GPU or CPU
-op2=>operation: 初始化ESPCN网络（model，weights，'Test'）
-op3=>operation: 根据输入图像的size来reshape网络
-op4=>operation: 完整的一次前向传播
-e=>end: 读取输出层数据即为超分辨率结果
-st->op1->op2->op3->op4->e
-
-```
+![这里写图片描述](http://img.blog.csdn.net/20160901165331667)
 
 caffe matlab接口的使用可以参考http://christopher5106.github.io/deep/learning/2015/09/04/Deep-learning-tutorial-on-Caffe-Technology.html
 
