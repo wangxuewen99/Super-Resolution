@@ -1,11 +1,25 @@
+% =========================================================================
+% 描述：   产生测试样本，将高分辨率图片下采样指定倍率得到低分辨率图像，再将高分辨
+%          率图像重排成多张小图使之像素点于低分辨率图像位置一一对应再在高低分辨率
+%          图像中提取图像块作为样本，洗牌打乱后写入hdf5文件中           
+%    
+% 参考文献：
+%  Shi W, Caballero J, Huszar F, et al. Real-Time Single Image and Video
+%  Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network[C]
+%  
+% 王学文
+% 欢聚时代|欢聚云|算法中心
+% wangxuewen@yy.com
+% =========================================================================
 clear;close all;
 %% settings
-folder = '../test/set5/';
+folder = '../Data/Test/set5/';
 savepath = 'test_espcn.h5';
 size_input = 25;
 size_label = 17;  
 scale = 3;
 stride = 14;
+chunksz = 32;
 
 %% initialization
 data = zeros(size_input, size_input, 1, 1);
@@ -17,7 +31,6 @@ count = 0;
 filepaths = dir(fullfile(folder,'*.bmp'));
 for i = 1 : length(filepaths) 
     image = imread(fullfile(folder,filepaths(i).name));
-    image = permute(image, [2, 1, 3]);
     image = rgb2ycbcr(image);
     image = im2double(image(:, :, 1));
     image = modcrop(image, scale);
@@ -48,7 +61,6 @@ data = data(:, :, 1, order);
 label = label(:, :, :, order); 
 
 %% writing to HDF5
-chunksz = 32;
 created_flag = false;
 totalct = 0;
 

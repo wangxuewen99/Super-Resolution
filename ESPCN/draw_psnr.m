@@ -1,17 +1,29 @@
 % =========================================================================
-%@description：draw psnr/iter curves
-%@author; Xuewen Wang
-%@date: 2016/6/30
+% 描述：   绘制PSNR值随网络不断迭代的变化曲线，需要设置min_iter,max_iter,step          
+%    
+% 参考文献：
+%  Shi W, Caballero J, Huszar F, et al. Real-Time Single Image and Video
+%  Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network[C]
+%  
+% 王学文
+% 欢聚时代|欢聚云|算法中心
+% wangxuewen@yy.com
 % =========================================================================
 
 close all;
 clear all;
 
-%% read ground truth image
-im = imread('../test/set14/face.bmp');
-%% set parameters
+%% settings
 up_scale = 3;
 model = './espcn_mat.prototxt';
+image_path = '../data/test/set14/lenna.bmp';
+step = 500;
+min_iter = 500;
+max_iter = 10000;
+
+%% read ground truth image
+im = imread(image_path);
+
 %% work on illuminance only
 if size(im,3)>1
     im = rgb2ycbcr(im);
@@ -28,9 +40,6 @@ im_gnd = shave(uint8(im_gnd * 255), [12, 12]);
 [input_height ,input_width] = size(im_l);
 input_channel = 1;
 batch =1;
-step = 10000;
-min_iter = 10000;
-max_iter = 5290000;
 count = fix((max_iter - min_iter)/step) +1;
 psnr = zeros(1,count);
 count = 1;
