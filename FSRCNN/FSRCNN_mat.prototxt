@@ -1,16 +1,9 @@
-############################
-#应用时网络定义文件        #
-#upscale = 3				 			 #
-#d = 56 s = 12 m =4  			 #
-#author = Xuewen Wang			 #
-############################
-
 name: "FSRCNN"
 input: "data"
 input_dim: 1
 input_dim: 1
-input_dim: 33
-input_dim: 33
+input_dim: 7
+input_dim: 7
 
 layer {
   name: "conv1"

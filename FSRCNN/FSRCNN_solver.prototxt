@@ -1,4 +1,3 @@
-#author = Xuewen Wang			 
 # The train/test net protocol buffer definition
 net: "./FSRCNN_net.prototxt"
 test_iter: 556
