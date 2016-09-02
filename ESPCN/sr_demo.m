@@ -6,7 +6,6 @@
 %  Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network[C]
 %  
 % 王学文
-% 欢聚时代|欢聚云|算法中心
 % wangxuewen@yy.com
 % =========================================================================
 %% settings
